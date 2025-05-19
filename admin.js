@@ -446,8 +446,23 @@ function getStatusText(status) {
 
 function logout() {
     localStorage.removeItem('isAdmin');
-    // Перенаправляем на главную страницу в корне проекта
-    window.location.href = '/index.html';
+    
+    // Получаем текущий URL
+    const currentUrl = window.location.href;
+    
+    // Если это GitHub Pages (определяем по домену)
+    if (currentUrl.includes('github.io')) {
+        // Разбираем URL чтобы получить имя репозитория
+        const urlParts = currentUrl.split('/');
+        const repoName = urlParts[3]; // Получаем имя репозитория
+        
+        // Формируем правильный URL для главной страницы
+        window.location.href = `https://${urlParts[2]}/${repoName}/index.html`;
+    } 
+    // Для локального тестирования
+    else {
+        window.location.href = 'index.html';
+    }
 }
 
 // Экспорт данных
