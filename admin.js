@@ -457,7 +457,7 @@ function logout() {
         const repoName = urlParts[3]; // Получаем имя репозитория
         
         // Формируем правильный URL для главной страницы
-        window.location.href = `https://kickbutovski2.github.io/sait1/index.html`;
+        window.location.href = `https://${urlParts[2]}/${repoName}/index.html`;
     } 
     // Для локального тестирования
     else {
